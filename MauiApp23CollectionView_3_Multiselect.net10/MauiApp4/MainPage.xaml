@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp4.MainPage"
+             x:Name="thisPage"
+             BindingContext="{x:Reference thisPage}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Text="Priorytet:"
+               Grid.Column="0" Grid.Row="0"/>
+
+        <Entry Text="{Binding Note.Priority}"
+               Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2"/>
+
+        <Label Text="Notatka: "
+               Grid.Column="0" Grid.Row="1"/>
+
+        <Editor Text="{Binding Note.Text}" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2"
+                Placeholder="Wpisz tu coś"/>
+
+        <Button Grid.Column="0" Grid.Row="2" Text="Dodaj"
+                Clicked="AddButtonClicked"/>
+
+        <Button Grid.Column="1" Grid.Row="2" Text="Usuń"
+                Clicked="RemoveButtonClicked"/>
+
+        <CollectionView
+            ItemsSource="{Binding AllNotes}"
+            SelectionMode="Multiple"
+            x:Name="TodoList"
+                  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border>
+                        <HorizontalStackLayout Margin="20,0,0,0">
+                            <Label Text="{Binding Priority}" FontSize="Subtitle"/>
+                            <Label Text=". " FontSize="Subtitle"/>
+                            <Label Text="{Binding Text}" FontSize="Subtitle"/>
+                        </HorizontalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+
+    </Grid>
+
+
+</ContentPage>

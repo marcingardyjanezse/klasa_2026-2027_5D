@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp3.MainPage"
+             x:Name="thisPage"
+             BindingContext="{x:Reference thisPage}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Image Source="dotnet_bot.png" BackgroundColor="PowderBlue"
+               Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"/>
+
+        <Editor Text="{Binding Note}" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"
+                Placeholder="Wpisz tu coś"/>
+
+        <Button Grid.Column="0" Grid.Row="2" Text="Dodaj"
+                Clicked="AddButtonClicked"/>
+
+        <Button Grid.Column="1" Grid.Row="2" Text="Usuń"
+                Clicked="RemoveButtonClicked"/>
+
+        <CollectionView
+            ItemsSource="{Binding AllNotes}"
+            SelectionMode="Single"
+                  SelectedItem="{Binding SelectedNote}"
+                  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <Border>
+                            <Label Text="{Binding .}" FontSize="Subtitle"/>
+                        </Border>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            
+        </CollectionView>
+
+    </Grid>
+
+
+</ContentPage>
