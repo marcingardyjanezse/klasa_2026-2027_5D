@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp9.MainPage"
+             xmlns:local="clr-namespace:MauiApp9">
+
+
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+            <Setter Property="HorizontalTextAlignment" Value="End" />
+        </Style>
+    </ContentPage.Resources>
+
+    <ContentPage.BindingContext>
+        <local:Calculator/>
+    </ContentPage.BindingContext>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Label Text="Wartość A:" Grid.Row="0" Grid.Column="0"/>
+        <Entry Text="{Binding ValueA}" Grid.Row="0" Grid.Column="1"/>
+
+        <Label Text="Wartość B:" Grid.Row="1" Grid.Column="0"/>
+        <Entry Text="{Binding ValueB}" Grid.Row="1" Grid.Column="1"/>
+
+        <Label Text="Wynik:" Grid.Row="2" Grid.Column="0"/>
+        <Entry Text="{Binding Result}" Grid.Row="2" Grid.Column="1"/>
+        
+        
+
+    </Grid>
+
+
+</ContentPage>
